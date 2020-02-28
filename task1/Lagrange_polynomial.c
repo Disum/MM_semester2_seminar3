@@ -3,7 +3,7 @@
 double Lagrange_polynomial(int n, double x0, double *x, double *y)
 {
 	int i, j;
-	double term, res = 0;;
+	double term, res = 0;
 
 	for( i = 0; i<n; i++ )
 	{
