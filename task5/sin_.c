@@ -3,8 +3,8 @@
 
 double sin_(double x, double eps)
 {
-	int flag_sign = 0, flag_div = 0, i, fact;
-	double res, item, x_in_deg;
+	int flag_sign = 0, i;
+	double res, item;
 
 	if( x<0 )
 	{
@@ -22,28 +22,36 @@ double sin_(double x, double eps)
 
 	if( x>1 )
 	{
-		x /= 4;
-		flag_div = 1;
-	}
+		x -= M_PI/2;
 
-	x_in_deg = x;
-	fact = 1;
-	item = x;
-	res = x;
-	for( i = 1; item>eps; i++ )
+		if( x<0 )
+			x *= -1;
+
+		item = 1;
+		res = 1;
+		for( i = 1; item>eps; i++ )
+		{
+			item *= x*x/( (2*i - 1)*2*i );
+
+			if( i%2 )
+				res -= item;
+			else
+				res += item;
+		}
+	} else
 	{
-		x_in_deg *= x*x;
-		fact *= 2*i*(2*i + 1);
-		item = x_in_deg/fact;
+		item = x;
+		res = x;
+		for( i = 1; item>eps; i++ )
+		{
+			item *= x*x/( 2*i*(2*i + 1) );
 
-		if( i%2 )
-			res -= item;
-		else
-			res += item;
+			if( i%2 )
+				res -= item;
+			else
+				res += item;
+		}
 	}
-
-	if( flag_div&1 )
-		res = (4*res - 8*res*res*res)*sqrt(1 - res*res);
 
 	if( flag_sign%2 )
 		res *= -1;
