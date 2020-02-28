@@ -44,7 +44,6 @@ double sin_(double x, double eps)
 
 	if( flag_div&1 )
 		res = (4*res - 8*res*res*res)*sqrt(1 - res*res);
-		//res = 5*res - 20*res*res*res + 16*res*res*res*res*res;
 
 	if( flag_sign%2 )
 		res *= -1;
