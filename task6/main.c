@@ -4,28 +4,25 @@
 #include "cos_.h"
 #define ERROR_READ 1
 
-int main(void)
+int main(int argc, const char **argv)
 {
 	double x, eps, res1, res2;
 	clock_t time_beg;
 
-	printf("x = ");
-	if( scanf("%lf", &x)!=1 )
+	if( argc!=3 )
 	{
-		fprintf(stderr, "Error! Can not read x!\n");
+		fprintf(stderr, "Usage: %s x eps\n", argv[0]);
 		return ERROR_READ;
 	}
-
-	printf("eps = ");
-	if( scanf("%lf", &eps)!=1 )
+	if( sscanf(argv[1], "%lf", &x)!=1 || sscanf(argv[2], "%lf", &eps)!=1 || eps<0 )
 	{
-		fprintf(stderr, "Error! Can not read eps!\n");
+		fprintf(stderr, "Error! Can not read!\n");
 		return ERROR_READ;
 	}
 
 	time_beg = clock();
 	res1 = cos_(x, eps);
-	printf("Result cos_(): %lf\nTime: %.2lf\n", res1, ( (double)(clock() - time_beg) )/CLOCKS_PER_SEC);
+	printf("Result cos_(): %lf\nTime: %.2lf sec\n", res1, ( (double)(clock() - time_beg) )/CLOCKS_PER_SEC);
 	res2 = cos(x);
 	printf("Result cos(): %lf\nDifference: %lf\n", res2, fabs(res2 - res1));
 
