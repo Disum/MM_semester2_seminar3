@@ -1,5 +1,4 @@
 #include <math.h>
-#include <stdio.h>//
 #include "cos_.h"
 
 double cos_(double x, double eps)
@@ -33,8 +32,6 @@ double cos_(double x, double eps)
 		x_in_deg *= x*x;
 		fact *= (2*i - 1)*2*i;
 		item = x_in_deg/fact;
-
-		printf("item = %lf\n", item);
 
 		if( i%2 )
 			res -= item;
