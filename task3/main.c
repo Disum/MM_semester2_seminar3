@@ -40,6 +40,7 @@ int main(int argc, const char **argv)
 	{
 		fprintf(stderr, "Error! Can not open %s!\n", argv[2]);
 		free(x);
+		free(y);
 		return ERROR_OPEN;
 	}
 
