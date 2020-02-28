@@ -1,30 +1,28 @@
 #include <stdio.h>
-#include <time.h>
 #include <math.h>
 #include "sin_.h"
 #define ERROR_READ 1
 
-int main(int argc, const char **argv)
+int main(void)
 {
-	double x, eps, res1, res2;
-	clock_t time_beg;
+	double x, eps, res;
 
-	if( argc!=3 )
-	{
-		fprintf(stderr, "Usage: %s x eps\n", argv[0]);
-		return ERROR_READ;
-	}
-	if( sscanf(argv[1], "%lf", &x)!=1 || sscanf(argv[2], "%lf", &eps)!=1 || eps<0 )
+	if( scanf("%lf", &x)!=1 || scanf("%lf", &eps)!=1 )
 	{
 		fprintf(stderr, "Error! Can not read!\n");
 		return ERROR_READ;
 	}
+	while( eps>0 )
+	{
+		res = sin_(x, eps);
+		printf("Result sin_(): %.16lf\nDifference: %.16lf\n", res, fabs(res - sin(x)));
 
-	time_beg = clock();
-	res1 = sin_(x, eps);
-	printf("Result sin_(): %lf\nTime: %.2lf sec\n", res1, ( (double)(clock() - time_beg) )/CLOCKS_PER_SEC);
-	res2 = sin(x);
-	printf("Result sin(): %lf\nDifference: %lf\n", res2, fabs(res2 - res1));
+		if( scanf("%lf", &x)!=1 || scanf("%lf", &eps)!=1 )
+		{
+			fprintf(stderr, "Error! Can not read!\n");
+			return ERROR_READ;
+		}
+	}
 
 	return 0;
 }
