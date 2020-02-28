@@ -3,8 +3,8 @@
 
 double exp_(double x, double eps)
 {
-	int flag_sign = 0, i, fact;
-	double res, item, x_in_deg;
+	int flag_sign = 0, i;
+	double res, item;
 
 	if( x<0 )
 	{
@@ -12,15 +12,11 @@ double exp_(double x, double eps)
 		flag_sign = 1;
 	}
 
-	x_in_deg = 1;
-	fact = 1;
 	item = 1;
 	res = 1;
 	for( i = 1; item>eps; i++ )
 	{
-		x_in_deg *= x;
-		fact *= i;
-		item = x_in_deg/fact;
+		item *= (x/i);
 
 		res += item;
 	}
