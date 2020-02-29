@@ -9,7 +9,7 @@ double Lagrange_polynomial(int n, double x0, double *x, double *y)
 	{
 		prod *= (x0 - x[i]);
 		for( j = 0; j<(n - i - 1); j++ )
-			y[j] = (y[j + 1] - y[j])/(x[j + i + 1] - x[j]);
+			y[j] = ( y[j + 1] - y[j] )/( x[j + i + 1] - x[j] );
 
 		res += y[0]*prod;
 	}
