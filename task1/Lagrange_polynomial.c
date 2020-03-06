@@ -13,7 +13,7 @@ double Lagrange_polynomial(int n, double x0, double *x, double *y)
 			if( i==j )
 				continue;
 
-			term *= (x0 - x[j])/(x[i] - x[j]);
+			term *= ( x0 - x[j] )/( x[i] - x[j] );
 		}
 
 		res += term;

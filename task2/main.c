@@ -64,7 +64,7 @@ int main(int argc, const char **argv)
 		return ERROR_READ;
 	}
 
-	printf("Result: %.16lf\n", Lagrange_polynomial(n, x0, x, y));
+	printf("Result: %.18e\n", Lagrange_polynomial(n, x0, x, y));
 
 	free(x);
 	free(y);

@@ -53,7 +53,7 @@ double cos_(double x, double eps)
 		}
 	}
 
-	if( flag_sign%2 )
+	if( flag_sign&1 )
 		res *= -1;
 
 	return res;

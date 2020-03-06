@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include "Lagrange_polynomial.h"
 #define ERROR_READ 1
 #define ERROR_ALLOCATE 2
@@ -11,7 +10,6 @@ int main(int argc, const char **argv)
 	double x0, *x, *y, res;
 	int n, i;
 	FILE *input;
-	clock_t time_beg;
 
 	if( argc!=3 )
 	{
@@ -66,9 +64,8 @@ int main(int argc, const char **argv)
 		return ERROR_READ;
 	}
 
-	time_beg = clock();
 	res = Lagrange_polynomial(n, x0, x, y);
-	printf("Result: %.8lf\nTime: %.2lf\n", res, ( (double)(clock() - time_beg) )/CLOCKS_PER_SEC);
+	printf("Result: %.8lf\n", res);
 
 	free(x);
 	free(y);

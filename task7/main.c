@@ -15,7 +15,7 @@ int main(void)
 	while( eps>0 )
 	{
 		res = exp_(x, eps);
-		printf("Result exp_(): %.16lf\nDifference: %.16lf\n", res, fabs(res - exp(x)));
+		printf("Result exp_(): %.16lf\nDifference: %e\n", res, fabs(res - exp(x)));
 
 		if( scanf("%lf", &x)!=1 || scanf("%lf", &eps)!=1 )
 		{
