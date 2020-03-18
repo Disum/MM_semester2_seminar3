@@ -6,9 +6,6 @@ double log_(double x, double eps)
 	int i, cnt_div = 0, cnt_mult = 0;
 	double res, x_in_deg;
 
-	x -= 1;
-	res = 0;
-	x_in_deg = 1;
 	while( x>=1 )
 	{
 		x /= 2;
@@ -19,6 +16,10 @@ double log_(double x, double eps)
 		x *= 2;
 		cnt_mult++;
 	}
+
+	x -= 1;
+	res = 0;
+	x_in_deg = 1;
 	for( i = 1; fabs( x_in_deg/(1 + x) )>eps; i++ )
 	{
 		x_in_deg *= x;
